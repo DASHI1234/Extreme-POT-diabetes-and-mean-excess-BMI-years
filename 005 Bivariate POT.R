@@ -95,7 +95,7 @@ dev.off()  # 关闭设备
 #cat("Shape Parameter (ξ):", gpdfit_fpg$mle[2], "Standard Error:", gpdfit_fpg$se[2], "\n")
 
 # 单变量过程找到 mean_ref_Cumulative_BMI_years 的阈值
-mrlplot(Cumulative_BMI_years, xlab = "Threshold u (Annualized BMI-years)")
+mrlplot(Cumulative_BMI_years, xlab = "Threshold u (CEBR)")
 
 # 添加 x = 6.78 的竖线
 abline(v = 2.18, col = "red", lty = 2)
@@ -109,9 +109,9 @@ text_y_position <- par_values$usr[3] + 0.9 * plot_height  # 假设标签位于�
 text(x = 2.18, y = text_y_position, labels = "u=2.18", pos = 4, col = "red", xpd = TRUE, adj = 0)
 
 # 保存图像到jpeg文件
-jpeg("Annualized_old_BMI-mean-residual-life-plot.jpeg", quality = 100, units = "in", width = 7, height = 6, res = 500)
+jpeg("Annualized_CEBR-old_BMI-mean-residual-life-plot.jpeg", quality = 100, units = "in", width = 7, height = 6, res = 500)
 # 单变量过程找到 mean_ref_Cumulative_BMI_years 的阈值
-mrlplot(Cumulative_BMI_years, xlab = "Threshold u (Annualized BMI-years)")
+mrlplot(Cumulative_BMI_years, xlab = "Threshold u (CEBR)")
 
 # 添加 x = 6.78 的竖线
 abline(v = 2.18, col = "red", lty = 2)

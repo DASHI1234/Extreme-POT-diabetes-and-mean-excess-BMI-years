@@ -112,21 +112,21 @@ library(dplyr)
 
 # 创建数据集
 data1 <- data.frame(
-  Age_Group = c("Total", "Young", "Old"),
+  Age_Group = c("Total Group", "Younger Age Group", "Older Age Group"),
   Copula_Density = c(0.061, 0.067, 0.051),
-  CI_Lower = c(0.050, 0.052, 0.034),
+  CI_Lower = c(0.051, 0.052, 0.034),
   CI_Upper = c(0.072, 0.080, 0.069)
 )
 
 # 确保 Age_Group 是因子并按顺序排列
 data1 <- data1 %>% 
-  mutate(Age_Group = factor(Age_Group, levels = c("Total", "Young", "Old")))
+  mutate(Age_Group = factor(Age_Group, levels = c("Total Group", "Younger Age Group", "Older Age Group")))
 
 # 绘制图形
 ggplot(data1, aes(x = Age_Group, y = Copula_Density)) +
   geom_point(size = 3, colour = 'skyblue') +
   geom_errorbar(aes(ymin = CI_Lower, ymax = CI_Upper), width = 0.2, colour = 'skyblue') +
-  labs(title = "", x = "Group", y = "Empirical Copula Proportion" )+
+  labs(title = "", x = "", y = "Empirical Copula Proportion" )+
   theme_minimal() +
   theme(
     plot.title = element_text(hjust = 0.5, size = 16),
@@ -144,7 +144,7 @@ ggplot(data1, aes(x = Age_Group, y = Copula_Density)) +
 
 
 
-jpeg("Annualized_reference_Copula_Density PLOT.jpeg", units = "in", width = 7, height = 6, res = 500)
+jpeg("Annualized_CEBR_Copula_Density PLOT.jpeg", units = "in", width = 7, height = 6, res = 500)
 # 绘制图形
 ggplot(data1, aes(x = Age_Group, y = Copula_Density)) +
   geom_point(size = 3, colour = 'skyblue') +
@@ -203,7 +203,7 @@ plot_ly() %>%
   layout(
     title = "3D Surface Plot of Empirical Copula Proportion",
     scene = list(
-      xaxis = list(title = "ECDF of Annualized BMI-years"),
+      xaxis = list(title = "ECDF of CEBR"),
       yaxis = list(title = "ECDF of FPG"),
       zaxis = list(title = "Proportion")
     )
@@ -232,7 +232,7 @@ p <- plot_ly() %>%
   layout(
     title = "3D Surface Plot of Empirical Copula Proportion",
     scene = list(
-      xaxis = list(title = "ECDF of Annualized BMI-years"),
+      xaxis = list(title = "ECDF of CEBR"),
       yaxis = list(title = "ECDF of FPG"),
       zaxis = list(title = "Proportion")
     )
@@ -240,5 +240,5 @@ p <- plot_ly() %>%
 
 # 保存为 JPEG 文件
 p <- plotly::plotly_build(p)
-plotly::save_image(p, "Annualized_old_reference_Empirical_Copula_3D_Surface_Plot.jpeg", width = 1400, height = 800, scale = 2)
+plotly::save_image(p, "Annualized-CEBR-old_Empirical_Copula_3D_Surface_Plot.jpeg", width = 1400, height = 800, scale = 2)
 
